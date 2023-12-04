@@ -1,7 +1,10 @@
 import discord
 import requests
 from discord.ext import commands
-
+import os
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+SEARCH = os.getenv('SEARCH')
+GOOGLE = os.getenv('GOOGLE')
 def search_images(query, api_key, cse_id, start=1, num=1):
     """Search for images using Google Custom Search JSON API."""
     url = 'https://www.googleapis.com/customsearch/v1'
