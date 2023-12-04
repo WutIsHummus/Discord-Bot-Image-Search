@@ -30,10 +30,10 @@ class MyBot(commands.Bot):
             self.ping_count += 1  # Increment the counter
             
             start_index = self.ping_count  # Use the counter as the start index for image search
-            images = search_images("silly cute cats", os.environ['GOOGLE'], os.environ['SEARCH'], start=start_index)  
+            images = search_images("silly cute cats", GOOGLE, SEARCH, start=start_index)  
             if images:
                 await message.channel.send(images[0])
             else:
                 await message.channel.send("No images found.")
 bot = MyBot()
-bot.run(os.environ['DISCORD_TOKEN']) 
+bot.run(DISCORD_TOKEN) 
