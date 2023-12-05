@@ -2,6 +2,7 @@ import discord
 import requests
 from discord.ext import commands
 import os
+import random
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 SEARCH = os.getenv('SEARCH')
 GOOGLE = os.getenv('GOOGLE')
