@@ -35,7 +35,7 @@ class MyBot(commands.Bot):
             self.ping_count += 1  # Increment the counter
             query_elements = ["silly", "cute", "funny", "adorable", "small", "fluffy", "small", "tiny", "soft", "fat", "cuddly", "curious"] #Add adjectives here to vary query results
             
-            selected_elements = random.sample(query_elements, random.randint(0, 3))
+            selected_elements = random.sample(query_elements, random.randint(1, 3))
             query = "Cats ".join(selected_elements)  # Combine the elements into a query string
             start_index = self.ping_count  # Use the counter as the start index for image search
             images = search_images(query, GOOGLE, SEARCH, start=start_index)  
