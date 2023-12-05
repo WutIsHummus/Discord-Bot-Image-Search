@@ -5,6 +5,7 @@ import os
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 SEARCH = os.getenv('SEARCH')
 GOOGLE = os.getenv('GOOGLE')
+
 def search_images(query, api_key, cse_id, start=1, num=1):
     """Search for images using Google Custom Search JSON API."""
     url = 'https://www.googleapis.com/customsearch/v1'
@@ -31,9 +32,11 @@ class MyBot(commands.Bot):
     async def on_message(self, message):
         if self.user.mentioned_in(message) and not message.mention_everyone:
             self.ping_count += 1  # Increment the counter
-            
+            query_elements = ["silly", "cute", "funny", "adorable", "playful", "furry", "small", "fluffy", "colorful", "small", "tiny"] #Add adjectives here to vary query results
+            selected_elements = random.sample(query_elements, 3)
+            query = "Cats ".join(selected_elements)  # Combine the elements into a query string
             start_index = self.ping_count  # Use the counter as the start index for image search
-            images = search_images("silly cute cats", GOOGLE, SEARCH, start=start_index)  
+            images = search_images(query, GOOGLE, SEARCH, start=start_index)  
             if images:
                 await message.channel.send(images[0])
             else:
