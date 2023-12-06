@@ -33,11 +33,12 @@ class MyBot(commands.Bot):
     async def on_message(self, message):
         if self.user.mentioned_in(message) and not message.mention_everyone:
             self.ping_count += 1  # Increment the counter
-            query_elements = ["silly", "cute", "funny", "adorable", "small", "fluffy", "small", "tiny", "soft", "fat", "cuddly", "curious"] #Add adjectives here to vary query results
-            
-            selected_elements = random.sample(query_elements,2)
-            query = "Cats ".join(selected_elements)  # Combine the elements into a query string
-            start_index = self.ping_count  # Use the counter as the start index for image search
+            animals = ["puppies", "kittens", "bunnies", "hamsters", "red pandas", "baby seals", "hedgehogs", "koalas", "penguins", "cats", "ducklings", "chicks", "fawns", "baby elephants", "baby cows"]
+            query_elements = ["silly", "baby", "cute", "funny", "adorable", "small", "fluffy", "small", "tiny", "soft", "fat", "cuddly", "curious"] 
+            selected_animal = random.choice(animals)
+            selected_elements = random.sample(query_elements, 2)
+            query = "A picture of ".join(selected_elements) + f" {selected_animal}"  
+            start_index = self.ping_count
             images = search_images(query, GOOGLE, SEARCH, start=start_index)  
             if images:
                 await message.channel.send(images[0])
