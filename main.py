@@ -33,7 +33,7 @@ class MyBot(commands.Bot):
     async def on_message(self, message):
         if self.user.mentioned_in(message) and not message.mention_everyone:
             self.ping_count += 1  # Increment the counter
-            animals = ["cats", "kittens", "bunnies", "penguins", "cats", "ducklings", "chicks", "fawns"]
+            animals = ["cats", "kittens", "bunnies"]
             query_elements = ["silly", "baby", "cute", "funny", "adorable", "small", "fluffy", "tiny", "soft", "fat", "cuddly"] 
             selected_animal = random.choice(animals)
             selected_elements = random.sample(query_elements, 2)
